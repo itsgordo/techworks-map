@@ -123,37 +123,37 @@ function myFunc(counties) {
     onEachFeature: onEachFeature,
   }).addTo(map);
 
+  var hoveredLayer = null;
+
   // Mouseover actions
   function onMapMouseOver(e) {
     var layer = e.target;
 
     // Hover highlight if the county is active
-    if (layer.feature.properties.active) {
-      layer.setStyle(hoverActiveCountiesOptions);
-      layer.bringToFront();
-      info.update(layer.feature.properties);
-    }
+    // Check if the county is active
+   // Check if the county is active
+   if (layer.feature.properties.active) {
+    // Set hover style for hovered active counties
+    layer.setStyle(hoverActiveCountiesOptions);
+    layer.bringToFront();
+    info.update(layer.feature.properties);
+    
+    // Update hoveredLayer
+    hoveredLayer = layer;
+   }
   }
 
   // Resets mouseover actions
   function onMapMouseOut(e) {
     var layer = e.target;
 
-    // Reset hover highlight if the county is active
     if (layer.feature.properties.active) {
+      // Reset style for non-hovered active counties
       layer.setStyle(activeCountiesOptions);
       info.update();
-    }
-  }
-
-  // Function to reset styles on touch end
-  function onMapTouchEnd(e) {
-    var layer = e.target;
-
-    // Reset hover highlight if the county is active
-    if (layer.feature.properties.active) {
-      layer.setStyle(activeCountiesOptions);
-      info.update();
+      
+      // Clear hoveredLayer
+      hoveredLayer = null;
     }
   }
 
@@ -182,7 +182,7 @@ function myFunc(counties) {
       layer.openPopup();
     }
   }
-  
+
   // Event listeners
   function onEachFeature(feature, layer) {
     // Label counties
@@ -192,7 +192,6 @@ function myFunc(counties) {
       mouseover: onMapMouseOver,
       mouseout: onMapMouseOut,
       click: onMapClick,
-      touchend: onMapTouchEnd
     });
   }
 
