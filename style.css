@@ -1,3 +1,7 @@
+body {
+  overflow: hidden !important;
+}
+
 #map {
   height: 100vh !important;
   width: 100vw !important;
