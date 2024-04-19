@@ -146,6 +146,17 @@ function myFunc(counties) {
     }
   }
 
+  // Function to reset styles on touch end
+  function onMapTouchEnd(e) {
+    var layer = e.target;
+
+    // Reset hover highlight if the county is active
+    if (layer.feature.properties.active) {
+      layer.setStyle(activeCountiesOptions);
+      info.update();
+    }
+  }
+
   // Click actions
   function onMapClick(e) {
     var layer = e.target;
@@ -171,7 +182,7 @@ function myFunc(counties) {
       layer.openPopup();
     }
   }
-
+  
   // Event listeners
   function onEachFeature(feature, layer) {
     // Label counties
@@ -181,6 +192,7 @@ function myFunc(counties) {
       mouseover: onMapMouseOver,
       mouseout: onMapMouseOut,
       click: onMapClick,
+      touchend: onMapTouchEnd
     });
   }
 
