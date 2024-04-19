@@ -1,6 +1,6 @@
 function myFunc(counties) {
   // Initialize map
-  var map = L.map("map").setView([42.10442, -75.91277], 8);
+  var map = L.map("map").setView([42.10442, -75.91277], 10  );
 
   // Add tile layer
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -10,8 +10,8 @@ function myFunc(counties) {
   }).addTo(map);
 
   // Set map bounds and limits
-  var southWest = L.latLng(42.2041242, -77.5909619),
-    northEast = L.latLng(42.5287778, -74.8498535);
+  var southWest = L.latLng(41.59588, -77.45020),
+    northEast = L.latLng(42.9885729, -75.1574637);
   var bounds = L.latLngBounds(southWest, northEast);
   map.setMaxBounds(bounds);
   map.on("drag", function () {
