@@ -1,11 +1,11 @@
 body {
-  overflow: hidden !important;
+  padding: 0;
+  margin: 0;
 }
 
-#map {
-  height: 100vh !important;
-  width: 100vw !important;
-  position: initial !important;
+html, body, #map {
+  height: 100%;
+  width: 100%;
 }
 
 .info {
